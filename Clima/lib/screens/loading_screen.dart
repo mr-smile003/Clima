@@ -20,7 +20,7 @@ print(position);
           onPressed: () {
             getLocation();
           },
-          child: Text('Get Location'),
+          child: Text('Get Locatio'),
         ),
       ),
     );
