@@ -1,4 +1,3 @@
-import 'package:clima/screens/city_screen.dart';
 import 'package:clima/services/location.dart';
 import 'package:clima/services/networking.dart';
 
