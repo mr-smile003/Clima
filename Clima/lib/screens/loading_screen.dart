@@ -5,6 +5,7 @@ import './location_screen.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 const apikey = '65afe7195e2deaaa0438b0079b9e4789';
+const urlop = 'https://api.openweathermap.org/data/2.5/weather';
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -19,19 +20,11 @@ void initState(){
   print('that is intiative');
 
 }
-double latitude;
-double longitude;
-
-
-
-
 void getLocation() async{
 
   Location location = Location();
   await location.getcurrentLocation();
-  latitude = location.latitude;
-  longitude = location.lungitude;
-  Networkinghelp networkinghelp = Networkinghelp(url: 'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apikey&units=metric');
+  Networkinghelp networkinghelp = Networkinghelp(url: '$urlop?lat=${location.latitude}&lon=${location.lungitude}&appid=$apikey&units=metric');
   
   var weatherdata =  await networkinghelp.getData();
 
