@@ -17,8 +17,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
 void initState(){
   super.initState();
   getLocation();
-  print('that is intiative');
-
 }
 void getLocation() async{
 
