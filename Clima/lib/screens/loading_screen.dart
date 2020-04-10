@@ -31,12 +31,12 @@ void getLocation() async{
   await location.getcurrentLocation();
   latitude = location.latitude;
   longitude = location.lungitude;
-  Networkinghelp networkinghelp = Networkinghelp(url: 'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apikey');
+  Networkinghelp networkinghelp = Networkinghelp(url: 'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apikey&units=metric');
   
   var weatherdata =  await networkinghelp.getData();
 
   Navigator.push(context, MaterialPageRoute(builder: (context){
-    return LocationScreen();
+    return LocationScreen(locationWeather: weatherdata,);
   }));
   
 }
@@ -54,7 +54,3 @@ void getLocation() async{
     );
   }
 }
-
-//      var temp = jsonDecode(data)["main"]["temp"];
-//      var city = jsonDecode(data)["name"];
-//      var id = jsonDecode(data)["weather"][0]["id"];
