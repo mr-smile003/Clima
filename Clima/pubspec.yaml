@@ -11,8 +11,8 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^0.1.2
-  http: ^0.12.0+4
   geolocator: ^5.3.1
+  http: ^0.12.0+4
 
 dev_dependencies:
   flutter_test:
@@ -20,7 +20,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
 
   assets:
   - images/
@@ -30,5 +29,3 @@ flutter:
     fonts:
     - asset: fonts/SpartanMB-Black.otf
       weight: 900
-module:
-  androidX: true // Add this line.
