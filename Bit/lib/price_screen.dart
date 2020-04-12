@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import './coin_data.dart';
 import 'dart:io' show Platform;
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 class PriceScreen extends StatefulWidget {
   @override
   _PriceScreenState createState() => _PriceScreenState();
 }
 
 class _PriceScreenState extends State<PriceScreen> {
-
-  String selectedvalue = 'USD';
-
+  String selectedvalue='USD';
+  String finalprice;
   DropdownButton<String> androiddropdownbotton() {
     List<DropdownMenuItem<String>> dropdownlist = [];
     for (String mycurr in currenciesList) {
@@ -41,8 +42,17 @@ CupertinoPicker iospiker(){
                   children: pike,
                   );
   }
+  void getusdprice() async{
+  http.Response response = await http.get('https://api.coindesk.com/v1/bpi/currentprice.json');
+  var usd = response.body;
+  var price = jsonDecode(usd)["bpi"]["USD"]["rate"];
+  finalprice = price;
+}
+
+
   @override
   Widget build(BuildContext context) {
+    getusdprice();
     return Scaffold(
       appBar: AppBar(
         title: Text('🤑 Coin Ticker'),
@@ -62,7 +72,7 @@ CupertinoPicker iospiker(){
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
                 child: Text(
-                  '1 BTC = ? USD',
+                  '1 BTC = $finalprice USD',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20.0,
@@ -84,3 +94,7 @@ CupertinoPicker iospiker(){
     );
   }
 }
+
+
+
+
