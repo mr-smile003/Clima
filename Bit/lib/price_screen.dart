@@ -42,17 +42,8 @@ CupertinoPicker iospiker(){
                   children: pike,
                   );
   }
-  void getusdprice() async{
-  http.Response response = await http.get('https://api.coindesk.com/v1/bpi/currentprice.json');
-  var usd = response.body;
-  var price = jsonDecode(usd)["bpi"]["USD"]["rate"];
-  finalprice = price;
-}
-
-
   @override
   Widget build(BuildContext context) {
-    getusdprice();
     return Scaffold(
       appBar: AppBar(
         title: Text('🤑 Coin Ticker'),
